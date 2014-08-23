@@ -1,0 +1,14 @@
+doctype html
+html(ng-app='demoApp')
+    head
+        meta(charset='utf-8')
+        title My AngularJS Demo
+    body
+        div(ng-controller='directiveCtrl')
+            h2 customer directive demo
+            h3 simple directive
+            pre return {template:'姓名: 地址'}
+            div(my-customer)
+
+        script(src='js/vendor/angular.js')
+        script(src='js/app.js')

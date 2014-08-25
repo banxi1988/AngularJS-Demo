@@ -9,6 +9,33 @@ html(ng-app='demoApp')
             h3 simple directive
             pre return {template:'姓名: 地址'}
             div(my-customer)
+            my-customer-html(person='zhangshan')
+            my-customer-html(person='lisi')
+
+            p Date format: 
+                input(ng-model='format') 
+                span current time is:
+                span(my-current-time='format')
+
+
+        div(ng-controller='scopeCtrl')
+            Your name:
+            input(type='text', ng-model='username')
+            button(ng-click='greet()') greet
+            hr
+            {{greeting}}
+
+        div(ng-controller='eventCtrl')
+            Root Scope <tt>MyEvent</tt> count:{{count}}
+            ul
+                li(ng-repeat="i in [1]", ng-controller='eventCtrl')
+                    button(ng-click="$emit('MyEvent')") $emit('MyEvent')
+                    button(ng-click="$broadcast('MyEvent')") $broadcast('MyEvent')
+                    br
+                    Middle scope <tt>MyEvent</tt> count:{{count}}
+                    ul
+                        li(ng-repeat="item in [1,2]", ng-controller='eventCtrl')
+                            Leaf scope <tt>MyEvent</tt> count:{{count}}
 
         script(src='js/vendor/angular.js')
         script(src='js/app.js')
